@@ -9,9 +9,6 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      packages: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -30,16 +27,28 @@ jobs:
           -includeImportedOntologies \
           -uniteSections \
           -noPlaceHolderText
-      - name: Deploy version documentation
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./output
-          destination_dir: release/${{ github.event.release.tag_name }}
-      - name: Deploy latest documentation
+          mv output/index-en.html output/index.html
+          rm output/readme.md
+      - name: Prepare ontology files
+        run: |
+          ls output/ontology.* | sed -e 'p;s/ontology/rio/' | xargs -n2 mv
+          sed -i 's/ontology\./rio./g' output/index.html
+      - name: Prepare version documentation
+        run: |
+          mkdir -p public/release
+          cp -r output/ public/release/${{ github.event.release.tag_name }}
+      - name: Prepare latest documentation
         if: '!github.event.release.prerelease'
+        run: cp -r output/ public/release/latest
+      - name: Upload release artifacts
+        uses: svenstaro/upload-release-action@v2
+        with:
+          tag: ${{ github.ref }}
+          file: output/rio.*
+          file_glob: true
+          overwrite: true
+      - name: Deploy documentation
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./output
-          destination_dir: release/latest
+          keep_files: true

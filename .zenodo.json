@@ -1,0 +1,14 @@
+{
+  "title": "RIO",
+  "upload_type": "dataset",
+  "description": "Risk Identification Ontology",
+  "creators": [
+    {
+      "name": "Alexandr Uciteli",
+      "affiliation": "Leipzig University, Institute for Medical Informatics, Statistics and Epidemiology, Leipzig, Germany",
+      "orcid": "0000-0001-9558-5352"
+    }
+  ],
+  "keywords": ["ontology", "risk"],
+  "license": "cc-by-4.0"
+}

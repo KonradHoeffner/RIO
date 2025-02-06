@@ -31,44 +31,44 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  https://w3id.org/gfo/light/causes
-<https://w3id.org/gfo/light/causes> rdf:type owl:ObjectProperty .
+###  https://w3id.org/gfo-light/causes
+<https://w3id.org/gfo-light/causes> rdf:type owl:ObjectProperty .
 
 
-###  https://w3id.org/gfo/light/existsIn
-<https://w3id.org/gfo/light/existsIn> rdf:type owl:ObjectProperty .
+###  https://w3id.org/gfo-light/existsIn
+<https://w3id.org/gfo-light/existsIn> rdf:type owl:ObjectProperty .
 
 
-###  https://w3id.org/gfo/light/hasPart
-<https://w3id.org/gfo/light/hasPart> rdf:type owl:ObjectProperty .
+###  https://w3id.org/gfo-light/hasPart
+<https://w3id.org/gfo-light/hasPart> rdf:type owl:ObjectProperty .
 
 
-###  https://w3id.org/gfo/light/hasPointInTime
-<https://w3id.org/gfo/light/hasPointInTime> rdf:type owl:ObjectProperty .
+###  https://w3id.org/gfo-light/hasPointInTime
+<https://w3id.org/gfo-light/hasPointInTime> rdf:type owl:ObjectProperty .
 
 
-###  https://w3id.org/gfo/light/hasStartPointInTime
-<https://w3id.org/gfo/light/hasStartPointInTime> rdf:type owl:ObjectProperty .
+###  https://w3id.org/gfo-light/hasStartPointInTime
+<https://w3id.org/gfo-light/hasStartPointInTime> rdf:type owl:ObjectProperty .
 
 
-###  https://w3id.org/gfo/light/partOf
-<https://w3id.org/gfo/light/partOf> rdf:type owl:ObjectProperty .
+###  https://w3id.org/gfo-light/partOf
+<https://w3id.org/gfo-light/partOf> rdf:type owl:ObjectProperty .
 
 
 #################################################################
 #    Data properties
 #################################################################
 
-###  https://w3id.org/gfo/light/booleanValue
-<https://w3id.org/gfo/light/booleanValue> rdf:type owl:DatatypeProperty .
+###  https://w3id.org/gfo-light/booleanValue
+<https://w3id.org/gfo-light/booleanValue> rdf:type owl:DatatypeProperty .
 
 
-###  https://w3id.org/gfo/light/decimalValue
-<https://w3id.org/gfo/light/decimalValue> rdf:type owl:DatatypeProperty .
+###  https://w3id.org/gfo-light/decimalValue
+<https://w3id.org/gfo-light/decimalValue> rdf:type owl:DatatypeProperty .
 
 
-###  https://w3id.org/gfo/light/stringValue
-<https://w3id.org/gfo/light/stringValue> rdf:type owl:DatatypeProperty .
+###  https://w3id.org/gfo-light/stringValue
+<https://w3id.org/gfo-light/stringValue> rdf:type owl:DatatypeProperty .
 
 
 #################################################################
@@ -113,7 +113,7 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 :Age_in_months_l_5 rdf:type owl:Class ;
                    owl:equivalentClass [ owl:intersectionOf ( :Age_in_months
                                                               [ rdf:type owl:Restriction ;
-                                                                owl:onProperty <https://w3id.org/gfo/light/decimalValue> ;
+                                                                owl:onProperty <https://w3id.org/gfo-light/decimalValue> ;
                                                                 owl:someValuesFrom [ rdf:type rdfs:Datatype ;
                                                                                      owl:onDatatype xsd:decimal ;
                                                                                      owl:withRestrictions ( [ xsd:minInclusive 0
@@ -138,7 +138,7 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 :Antibiotic_prevention_e_false rdf:type owl:Class ;
                                owl:equivalentClass [ owl:intersectionOf ( :Antibiotic_prevention
                                                                           [ rdf:type owl:Restriction ;
-                                                                            owl:onProperty <https://w3id.org/gfo/light/booleanValue> ;
+                                                                            owl:onProperty <https://w3id.org/gfo-light/booleanValue> ;
                                                                             owl:hasValue "false"^^xsd:boolean
                                                                           ]
                                                                         ) ;
@@ -162,25 +162,25 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 :Dura_mater_infection_risk_situation rdf:type owl:Class ;
                                      owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Class ;
                                                                                   owl:unionOf ( [ rdf:type owl:Restriction ;
-                                                                                                  owl:onProperty <https://w3id.org/gfo/light/hasPart> ;
+                                                                                                  owl:onProperty <https://w3id.org/gfo-light/hasPart> ;
                                                                                                   owl:someValuesFrom :Age_in_months_l_5
                                                                                                 ]
                                                                                                 [ rdf:type owl:Restriction ;
-                                                                                                  owl:onProperty <https://w3id.org/gfo/light/hasPart> ;
+                                                                                                  owl:onProperty <https://w3id.org/gfo-light/hasPart> ;
                                                                                                   owl:someValuesFrom :Ear_structure_e_abnormal
                                                                                                 ]
                                                                                                 [ rdf:type owl:Restriction ;
-                                                                                                  owl:onProperty <https://w3id.org/gfo/light/hasPart> ;
+                                                                                                  owl:onProperty <https://w3id.org/gfo-light/hasPart> ;
                                                                                                   owl:someValuesFrom :Skull_bone_thickness_le_2
                                                                                                 ]
                                                                                               )
                                                                                 ]
                                                                                 [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty <https://w3id.org/gfo/light/hasPart> ;
+                                                                                  owl:onProperty <https://w3id.org/gfo-light/hasPart> ;
                                                                                   owl:someValuesFrom :Antibiotic_prevention_e_false
                                                                                 ]
                                                                                 [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty <https://w3id.org/gfo/light/hasPart> ;
+                                                                                  owl:onProperty <https://w3id.org/gfo-light/hasPart> ;
                                                                                   owl:someValuesFrom :Vaccination_e_false
                                                                                 ]
                                                                               ) ;
@@ -188,16 +188,16 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
                                                          ] ;
                                      rdfs:subClassOf <https://w3id.org/rio/Risk_situation> ,
                                                      [ rdf:type owl:Restriction ;
-                                                       owl:onProperty <https://w3id.org/gfo/light/causes> ;
+                                                       owl:onProperty <https://w3id.org/gfo-light/causes> ;
                                                        owl:someValuesFrom :Dura_mater_infection
                                                      ] ,
                                                      [ rdf:type owl:Restriction ;
-                                                       owl:onProperty <https://w3id.org/gfo/light/existsIn> ;
+                                                       owl:onProperty <https://w3id.org/gfo-light/existsIn> ;
                                                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                        owl:onClass :Indication_phase
                                                      ] ,
                                                      [ rdf:type owl:Restriction ;
-                                                       owl:onProperty <https://w3id.org/gfo/light/hasPointInTime> ;
+                                                       owl:onProperty <https://w3id.org/gfo-light/hasPointInTime> ;
                                                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                        owl:onClass :Indication_start
                                                      ] ;
@@ -208,7 +208,7 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
    owl:annotatedSource :Dura_mater_infection_risk_situation ;
    owl:annotatedProperty rdfs:subClassOf ;
    owl:annotatedTarget [ rdf:type owl:Restriction ;
-                         owl:onProperty <https://w3id.org/gfo/light/causes> ;
+                         owl:onProperty <https://w3id.org/gfo-light/causes> ;
                          owl:someValuesFrom :Dura_mater_infection
                        ] ;
    <https://w3id.org/rio/adverse_event_probability> 0.09
@@ -224,7 +224,7 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 :Ear_structure_e_abnormal rdf:type owl:Class ;
                           owl:equivalentClass [ owl:intersectionOf ( :Ear_structure
                                                                      [ rdf:type owl:Restriction ;
-                                                                       owl:onProperty <https://w3id.org/gfo/light/stringValue> ;
+                                                                       owl:onProperty <https://w3id.org/gfo-light/stringValue> ;
                                                                        owl:hasValue "abnormal"^^xsd:string
                                                                      ]
                                                                    ) ;
@@ -237,12 +237,12 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 :Indication_phase rdf:type owl:Class ;
                   rdfs:subClassOf <https://w3id.org/rio/Treatment_phase> ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty <https://w3id.org/gfo/light/hasStartPointInTime> ;
+                                    owl:onProperty <https://w3id.org/gfo-light/hasStartPointInTime> ;
                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                     owl:onClass :Indication_start
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty <https://w3id.org/gfo/light/partOf> ;
+                                    owl:onProperty <https://w3id.org/gfo-light/partOf> ;
                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                     owl:onClass :Cochlear_Implantation
                                   ] .
@@ -262,7 +262,7 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 :Skull_bone_thickness_le_2 rdf:type owl:Class ;
                            owl:equivalentClass [ owl:intersectionOf ( :Skull_bone_thickness
                                                                       [ rdf:type owl:Restriction ;
-                                                                        owl:onProperty <https://w3id.org/gfo/light/decimalValue> ;
+                                                                        owl:onProperty <https://w3id.org/gfo-light/decimalValue> ;
                                                                         owl:someValuesFrom [ rdf:type rdfs:Datatype ;
                                                                                              owl:onDatatype xsd:decimal ;
                                                                                              owl:withRestrictions ( [ xsd:minInclusive 0
@@ -287,7 +287,7 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 :Vaccination_e_false rdf:type owl:Class ;
                      owl:equivalentClass [ owl:intersectionOf ( :Vaccination
                                                                 [ rdf:type owl:Restriction ;
-                                                                  owl:onProperty <https://w3id.org/gfo/light/booleanValue> ;
+                                                                  owl:onProperty <https://w3id.org/gfo-light/booleanValue> ;
                                                                   owl:hasValue "false"^^xsd:boolean
                                                                 ]
                                                               ) ;
@@ -303,43 +303,43 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/rio/example/age_4
 :age_4 rdf:type owl:NamedIndividual ,
                 :Age_in_months ;
-       <https://w3id.org/gfo/light/decimalValue> 4 .
+       <https://w3id.org/gfo-light/decimalValue> 4 .
 
 
 ###  https://w3id.org/rio/example/age_5
 :age_5 rdf:type owl:NamedIndividual ,
                 :Age_in_months ;
-       <https://w3id.org/gfo/light/decimalValue> 5 .
+       <https://w3id.org/gfo-light/decimalValue> 5 .
 
 
 ###  https://w3id.org/rio/example/antibiotic_false
 :antibiotic_false rdf:type owl:NamedIndividual ,
                            :Antibiotic_prevention ;
-                  <https://w3id.org/gfo/light/booleanValue> "false"^^xsd:boolean .
+                  <https://w3id.org/gfo-light/booleanValue> "false"^^xsd:boolean .
 
 
 ###  https://w3id.org/rio/example/antibiotic_true
 :antibiotic_true rdf:type owl:NamedIndividual ,
                           :Antibiotic_prevention ;
-                 <https://w3id.org/gfo/light/booleanValue> "true"^^xsd:boolean .
+                 <https://w3id.org/gfo-light/booleanValue> "true"^^xsd:boolean .
 
 
 ###  https://w3id.org/rio/example/ear_abnormal
 :ear_abnormal rdf:type owl:NamedIndividual ,
                        :Ear_structure ;
-              <https://w3id.org/gfo/light/stringValue> "abnormal"^^xsd:string .
+              <https://w3id.org/gfo-light/stringValue> "abnormal"^^xsd:string .
 
 
 ###  https://w3id.org/rio/example/ear_normal
 :ear_normal rdf:type owl:NamedIndividual ,
                      :Ear_structure ;
-            <https://w3id.org/gfo/light/stringValue> "normal"^^xsd:string .
+            <https://w3id.org/gfo-light/stringValue> "normal"^^xsd:string .
 
 
 ###  https://w3id.org/rio/example/nrs1
 :nrs1 rdf:type owl:NamedIndividual ,
                <https://w3id.org/rio/Treatment_situation> ;
-      <https://w3id.org/gfo/light/hasPart> :age_5 ,
+      <https://w3id.org/gfo-light/hasPart> :age_5 ,
                                            :antibiotic_false ,
                                            :vaccination_false .
 
@@ -347,7 +347,7 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/rio/example/nrs2
 :nrs2 rdf:type owl:NamedIndividual ,
                <https://w3id.org/rio/Treatment_situation> ;
-      <https://w3id.org/gfo/light/hasPart> :antibiotic_false ,
+      <https://w3id.org/gfo-light/hasPart> :antibiotic_false ,
                                            :ear_normal ,
                                            :vaccination_false .
 
@@ -355,7 +355,7 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/rio/example/nrs3
 :nrs3 rdf:type owl:NamedIndividual ,
                <https://w3id.org/rio/Treatment_situation> ;
-      <https://w3id.org/gfo/light/hasPart> :antibiotic_true ,
+      <https://w3id.org/gfo-light/hasPart> :antibiotic_true ,
                                            :skull_2 ,
                                            :vaccination_false .
 
@@ -363,7 +363,7 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/rio/example/rs1
 :rs1 rdf:type owl:NamedIndividual ,
               <https://w3id.org/rio/Treatment_situation> ;
-     <https://w3id.org/gfo/light/hasPart> :age_4 ,
+     <https://w3id.org/gfo-light/hasPart> :age_4 ,
                                           :antibiotic_false ,
                                           :vaccination_false .
 
@@ -371,7 +371,7 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/rio/example/rs2
 :rs2 rdf:type owl:NamedIndividual ,
               <https://w3id.org/rio/Treatment_situation> ;
-     <https://w3id.org/gfo/light/hasPart> :antibiotic_false ,
+     <https://w3id.org/gfo-light/hasPart> :antibiotic_false ,
                                           :ear_abnormal ,
                                           :vaccination_false .
 
@@ -379,7 +379,7 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/rio/example/rs3
 :rs3 rdf:type owl:NamedIndividual ,
               <https://w3id.org/rio/Treatment_situation> ;
-     <https://w3id.org/gfo/light/hasPart> :antibiotic_false ,
+     <https://w3id.org/gfo-light/hasPart> :antibiotic_false ,
                                           :skull_2 ,
                                           :vaccination_false .
 
@@ -387,25 +387,25 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/rio/example/skull_2
 :skull_2 rdf:type owl:NamedIndividual ,
                   :Skull_bone_thickness ;
-         <https://w3id.org/gfo/light/decimalValue> 2 .
+         <https://w3id.org/gfo-light/decimalValue> 2 .
 
 
 ###  https://w3id.org/rio/example/skull_3
 :skull_3 rdf:type owl:NamedIndividual ,
                   :Skull_bone_thickness ;
-         <https://w3id.org/gfo/light/decimalValue> 3 .
+         <https://w3id.org/gfo-light/decimalValue> 3 .
 
 
 ###  https://w3id.org/rio/example/vaccination_false
 :vaccination_false rdf:type owl:NamedIndividual ,
                             :Vaccination ;
-                   <https://w3id.org/gfo/light/booleanValue> "false"^^xsd:boolean .
+                   <https://w3id.org/gfo-light/booleanValue> "false"^^xsd:boolean .
 
 
 ###  https://w3id.org/rio/example/vaccination_true
 :vaccination_true rdf:type owl:NamedIndividual ,
                            :Vaccination ;
-                  <https://w3id.org/gfo/light/booleanValue> "true"^^xsd:boolean .
+                  <https://w3id.org/gfo-light/booleanValue> "true"^^xsd:boolean .
 
 
 [ owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger

@@ -12,7 +12,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix terms: <http://purl.org/dc/terms/> .
-@prefix gfo-light: <https://w3id.org/gfo/light/> .
+@prefix gfo-light: <https://w3id.org/gfo-light/> .
 @base <https://w3id.org/rio> .
 
 <https://w3id.org/rio> rdf:type owl:Ontology ;
@@ -114,31 +114,31 @@ rio:adverse_event_severity rdf:type owl:AnnotationProperty ;
 #    Object Properties
 #################################################################
 
-###  https://w3id.org/gfo/light/causes
+###  https://w3id.org/gfo-light/causes
 gfo-light:causes rdf:type owl:ObjectProperty .
 
 
-###  https://w3id.org/gfo/light/existsIn
+###  https://w3id.org/gfo-light/existsIn
 gfo-light:existsIn rdf:type owl:ObjectProperty .
 
 
-###  https://w3id.org/gfo/light/hasPart
+###  https://w3id.org/gfo-light/hasPart
 gfo-light:hasPart rdf:type owl:ObjectProperty .
 
 
-###  https://w3id.org/gfo/light/hasPointInTime
+###  https://w3id.org/gfo-light/hasPointInTime
 gfo-light:hasPointInTime rdf:type owl:ObjectProperty .
 
 
-###  https://w3id.org/gfo/light/isBefore
+###  https://w3id.org/gfo-light/isBefore
 gfo-light:isBefore rdf:type owl:ObjectProperty .
 
 
-###  https://w3id.org/gfo/light/partOf
+###  https://w3id.org/gfo-light/partOf
 gfo-light:partOf rdf:type owl:ObjectProperty .
 
 
-###  https://w3id.org/gfo/light/pointInTimeOf
+###  https://w3id.org/gfo-light/pointInTimeOf
 gfo-light:pointInTimeOf rdf:type owl:ObjectProperty .
 
 
@@ -146,23 +146,23 @@ gfo-light:pointInTimeOf rdf:type owl:ObjectProperty .
 #    Classes
 #################################################################
 
-###  https://w3id.org/gfo/light/Attributive
+###  https://w3id.org/gfo-light/Attributive
 gfo-light:Attributive rdf:type owl:Class .
 
 
-###  https://w3id.org/gfo/light/Event
+###  https://w3id.org/gfo-light/Event
 gfo-light:Event rdf:type owl:Class .
 
 
-###  https://w3id.org/gfo/light/Process
+###  https://w3id.org/gfo-light/Process
 gfo-light:Process rdf:type owl:Class .
 
 
-###  https://w3id.org/gfo/light/Situation
+###  https://w3id.org/gfo-light/Situation
 gfo-light:Situation rdf:type owl:Class .
 
 
-###  https://w3id.org/gfo/light/TimeBoundary
+###  https://w3id.org/gfo-light/TimeBoundary
 gfo-light:TimeBoundary rdf:type owl:Class .
 
 

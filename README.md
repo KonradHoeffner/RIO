@@ -24,7 +24,7 @@ According to the definitions in the [publication](#publication), a particular co
 
 ## Founding RIO with GFO-light
 
-The current version of RIO, is founded with the new lightweight version of GFO, called GFO-light (see [GFO repository](https://github.com/Onto-Med/GFO)), which is designed as a framework for the efficient development and foundation of domain/application ontologies.
+The current version of RIO, is founded with the new lightweight version of GFO, called [GFO-light](https://github.com/Onto-Med/gfo-light), which is designed as a framework for the efficient development and foundation of domain/application ontologies.
 By using GFO-light, some parts of RIO could be simplified, i.e., modelled with fewer entities (classes, properties, individuals).
 
 ![RIO overview](images/rio.svg)
@@ -88,3 +88,4 @@ The treatment situation instance *rs1*, for example, has the assertions shown in
 * [Project website](http://www.ontomedrisk.de/)
 * [Further publications](https://www.uniklinikum-jena.de/gbit/Aufbauorganisation/Anwendungsforschung+/OntoMedRisk.pdf?rewrite_engine=id&no301=1)
 * [General Formal Ontology (GFO)](https://github.com/Onto-Med/GFO)
+* [GFO-light](https://github.com/Onto-Med/gfo-light)

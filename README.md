@@ -32,17 +32,15 @@ By using GFO-light, some parts of RIO could be simplified, i.e., modelled with f
 **Fig. 1.** *RIO - GFO-light embedding (overview)*
 
 The main difference to the [original version of RIO](https://github.com/Onto-Med/RIO/releases/tag/2017-07-24) is a new interpretation of the notion of situation.
-Whereas in the original RIO, the treatment situations possessed (*gfo:has_property*) some properties (including composite risk properties), i.e., were bearers of properties, a situation in GFO-light (and correspondingly also in the new RIO) is understood as a combination of properties (*gfo-light:attributive*), i.e., a situation consists of (gfo-light:hasPart) attributives.
-The class *Risk* could be omitted.
-The individual properties do not have to be encapsulated in composite risk properties, but can be assigned directly to the treatment situation.
-Each subclass of *Risk_situation* (e.g., *Dura_mater_infection_risk_situation*) represents a risk type by restrictions of the properties determining the risk of this type (e.g., patient age ≤ 5 months, meningitis vaccination = false and antibiotic prevention = false).
-Potential risk situations containing these properties in the defined ranges are classified automatically as risk situations of corresponding types.
+Whereas in the original RIO, the treatment situations possessed (*gfo:has_property*) some properties (including composite risk properties), i.e., were bearers of properties, a situation in GFO-light (and correspondingly also in the new RIO) is understood as a combination of properties (*gfo-light:Attributive*), i.e., a situation consists of (*gfo-light:hasSituationPart*) attributives.
 
-A further simplification is that in GFO-light points in time of a process can be assigned directly to the process itself (see *pointInTimeOf* in **Fig.1**), without a detour via its temporal extension (*gfo:Chronoid*).
-In addition, some object properties from GFO-light (e.g., *gfo-light:existsIn* and *gfo-light:causes*) could be reused so that it was no longer necessary to define similar properties (*risk_in_phase*, *risk_for_adverse_situation* and *succeeding_situation*) in RIO.
+The class *Risk* could be omitted. The individual properties do not have to be encapsulated in composite risk properties, but can be assigned directly to the treatment situation. Each subclass of *Risk_situation* (e.g., *Dura_mater_infection_risk_situation*) represents a risk type by restrictions of the properties determining the risk of this type (e.g., patient age ≤ 5 months, meningitis vaccination = false and antibiotic prevention = false). Potential risk situations containing these properties in the defined ranges are classified automatically as risk situations of corresponding types.
 
-A small example ([examples/rio-example.ttl](examples/rio-example.ttl)) illustrates the identification (reasoning) of risks for a bacterial infection during cochlear implantation in infants.
-Five KPIs are defined (as subclasses of the class *KPI*), each of which has a subclass with a property restriction (**Tab. 1**). 
+A further simplification is that in GFO-light points in time of a process can be assigned directly to the process itself (see *temporalPartOf* in **Fig.1**), without a detour via its temporal extension (*gfo:Chronoid*).
+
+In addition, some object properties from GFO-light (e.g., *gfo-light:processPartOf*, *gfo-light:situationPartOf* and *gfo-light:leadsTo*) could be reused so that it was no longer necessary to define similar properties (*risk_in_phase*, *risk_for_adverse_situation* and *succeeding_situation*) in RIO.
+
+A small example ([examples/rio-example.ttl](examples/rio-example.ttl)) illustrates the identification (reasoning) of risks for a bacterial infection during cochlear implantation in infants. Five KPIs are defined (as subclasses of the class *KPI*), each of which has a subclass with a property restriction (**Tab. 1**). 
 
 <table>
     <tr><th>KPI class</th><th>KPI subclass</th><th>KPI restriction</th></tr>
@@ -58,22 +56,21 @@ Five KPIs are defined (as subclasses of the class *KPI*), each of which has a su
 The class *Dura_mater_infection_risk_situation* (a subclass of *Treatment_situation/Risk_situation*) has the following restriction (risk identification rule):
 
     (
-        (hasPart some Age_in_months_l_5) or 
-        (hasPart some Ear_structure_e_abnormal) or 
-        (hasPart some Skull_bone_thickness_le_2)
+        (hasSituationPart some Age_in_months_l_5) or 
+        (hasSituationPart some Ear_structure_e_abnormal) or 
+        (hasSituationPart some Skull_bone_thickness_le_2)
     )
-    and (hasPart some Antibiotic_prevention_e_false)
-    and (hasPart some Vaccination_e_false)
+    and (hasSituationPart some Antibiotic_prevention_e_false)
+    and (hasSituationPart some Vaccination_e_false)
 
 
-Situations that fulfil this rule (i.e., required KPIs are within the defined ranges) are automatically classified in the class *Dura_mater_infection_risk_situation* by the reasoner.
-The treatment situation instance *rs1*, for example, has the assertions shown in the **Tab. 2**, fulfils the risk rule/restriction and is therefore classified in the class *Dura_mater_infection_risk_situation*.
+Situations that fulfil this rule (i.e., required KPIs are within the defined ranges) are automatically classified in the class *Dura_mater_infection_risk_situation* by the reasoner. The treatment situation instance *rs1*, for example, has the assertions shown in the **Tab. 2**, fulfils the risk rule/restriction and is therefore classified in the class *Dura_mater_infection_risk_situation*.
 
 <table>
     <tr><th>Object property assertion</th><th>Data property assertion</th></tr>
-    <tr><td>hasPart vaccination_false</td><td>booleanValue false</td></tr>
-    <tr><td>hasPart age_4</td><td>decimalValue 4</td></tr>
-    <tr><td>hasPart antibiotic_false</td><td>booleanValue false</td></tr>
+    <tr><td>hasSituationPart vaccination_false</td><td>booleanValue false</td></tr>
+    <tr><td>hasSituationPart age_4</td><td>decimalValue 4</td></tr>
+    <tr><td>hasSituationPart antibiotic_false</td><td>booleanValue false</td></tr>
 </table>
 
 **Tab. 2.** *Example instance (rs1) of the class Treatment_situation. In the first column are object property assertions of rs1, in the second column - the data property assertions of the corresponding KPI instance.*

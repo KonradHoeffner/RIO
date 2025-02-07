@@ -13,21 +13,22 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix terms: <http://purl.org/dc/terms/> .
 @prefix gfo-light: <https://w3id.org/gfo-light/> .
-@base <https://w3id.org/rio> .
+@base <https://w3id.org/rio/> .
 
 <https://w3id.org/rio> rdf:type owl:Ontology ;
-                        owl:versionIRI <https://w3id.org/rio/release/2024-09-05> ;
+                        owl:versionIRI <https://w3id.org/rio/release/2025-02-07> ;
+                        owl:imports <https://w3id.org/gfo-light/release/2025-01-06> ;
                         dc:created "2016-04-27" ;
                         dc:creator "Alexandr Uciteli" ;
                         dc:description "Risk Identification Ontology (RIO) provides a framework for risk specification and reasoning."@en ;
-                        dc:modified "2024-09-05" ;
+                        dc:modified "2025-02-07" ;
                         dc:title "Risk Identification Ontology (RIO)"@en ;
                         terms:license <http://creativecommons.org/licenses/by/4.0/> ;
                         vann:preferredNamespacePrefix "rio" ;
                         vann:preferredNamespaceURI "https://w3id.org/rio/" ;
                         doap:repository <https://github.com/Onto-Med/RIO> ;
                         rdfs:label "Risk Identification Ontology (RIO)"@en ;
-                        owl:versionInfo "2024-09-05" ;
+                        owl:versionInfo "2025-02-07" ;
                         foaf:homepage "http://www.ontomedrisk.de/" .
 
 #################################################################
@@ -98,48 +99,52 @@ skos:example rdf:type owl:AnnotationProperty .
 foaf:homepage rdf:type owl:AnnotationProperty .
 
 
-###  https://w3id.org/rio/adverse_event_probability
-rio:adverse_event_probability rdf:type owl:AnnotationProperty ;
-                              rdfs:range xsd:decimal ;
-                              rdfs:domain rio:Risk_situation .
+###  https://w3id.org/rio/adverse_situation_probability
+rio:adverse_situation_probability rdf:type owl:AnnotationProperty ;
+                                  rdfs:range xsd:decimal ;
+                                  rdfs:domain rio:Risk_situation .
 
 
-###  https://w3id.org/rio/adverse_event_severity
-rio:adverse_event_severity rdf:type owl:AnnotationProperty ;
-                           rdfs:range xsd:int ;
-                           rdfs:domain rio:Adverse_event .
+###  https://w3id.org/rio/adverse_situation_severity
+rio:adverse_situation_severity rdf:type owl:AnnotationProperty ;
+                               rdfs:range xsd:int ;
+                               rdfs:domain rio:Adverse_situation .
 
 
 #################################################################
 #    Object Properties
 #################################################################
 
-###  https://w3id.org/gfo-light/causes
-gfo-light:causes rdf:type owl:ObjectProperty .
+###  https://w3id.org/gfo-light/hasSituationPart
+gfo-light:hasSituationPart rdf:type owl:ObjectProperty .
 
 
-###  https://w3id.org/gfo-light/existsIn
-gfo-light:existsIn rdf:type owl:ObjectProperty .
+###  https://w3id.org/gfo-light/hasTemporalPart
+gfo-light:hasTemporalPart rdf:type owl:ObjectProperty .
 
 
-###  https://w3id.org/gfo-light/hasPart
-gfo-light:hasPart rdf:type owl:ObjectProperty .
+###  https://w3id.org/gfo-light/hasTime
+gfo-light:hasTime rdf:type owl:ObjectProperty .
 
 
-###  https://w3id.org/gfo-light/hasPointInTime
-gfo-light:hasPointInTime rdf:type owl:ObjectProperty .
+###  https://w3id.org/gfo-light/leadsTo
+gfo-light:leadsTo rdf:type owl:ObjectProperty .
 
 
-###  https://w3id.org/gfo-light/isBefore
-gfo-light:isBefore rdf:type owl:ObjectProperty .
+###  https://w3id.org/gfo-light/processPartOf
+gfo-light:processPartOf rdf:type owl:ObjectProperty .
 
 
-###  https://w3id.org/gfo-light/partOf
-gfo-light:partOf rdf:type owl:ObjectProperty .
+###  https://w3id.org/gfo-light/situationPartOf
+gfo-light:situationPartOf rdf:type owl:ObjectProperty .
 
 
-###  https://w3id.org/gfo-light/pointInTimeOf
-gfo-light:pointInTimeOf rdf:type owl:ObjectProperty .
+###  https://w3id.org/gfo-light/temporalPartOf
+gfo-light:temporalPartOf rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/gfo-light/timeOf
+gfo-light:timeOf rdf:type owl:ObjectProperty .
 
 
 #################################################################
@@ -148,10 +153,6 @@ gfo-light:pointInTimeOf rdf:type owl:ObjectProperty .
 
 ###  https://w3id.org/gfo-light/Attributive
 gfo-light:Attributive rdf:type owl:Class .
-
-
-###  https://w3id.org/gfo-light/Event
-gfo-light:Event rdf:type owl:Class .
 
 
 ###  https://w3id.org/gfo-light/Process
@@ -166,19 +167,20 @@ gfo-light:Situation rdf:type owl:Class .
 gfo-light:TimeBoundary rdf:type owl:Class .
 
 
-###  https://w3id.org/rio/Adverse_event
-rio:Adverse_event rdf:type owl:Class ;
-                  rdfs:subClassOf gfo-light:Event ;
-                  rdfs:label "Adverse event"@en ;
-                  skos:definition "An adverse event is any untoward/undesirable occurrence in a treatment."@en ;
-                  skos:example "Dura mater infection"@en .
+###  https://w3id.org/rio/Adverse_situation
+rio:Adverse_situation rdf:type owl:Class ;
+                      rdfs:subClassOf rio:Treatment_situation ;
+                      rdfs:label "Adverse situation"@en ;
+                      skos:altLabel "Adverse event"@en ;
+                      skos:definition "An adverse situation is any untoward/undesirable treatment situation."@en ;
+                      skos:example "Dura mater infection"@en .
 
 
 ###  https://w3id.org/rio/KPI
 rio:KPI rdf:type owl:Class ;
         rdfs:subClassOf gfo-light:Attributive ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty gfo-light:partOf ;
+                          owl:onProperty gfo-light:situationPartOf ;
                           owl:someValuesFrom rio:Treatment_situation
                         ] ;
         rdfs:label "KPI"@en ;
@@ -193,7 +195,7 @@ rio:KPI rdf:type owl:Class ;
 rio:Point_in_time_of_risk_detection rdf:type owl:Class ;
                                     rdfs:subClassOf rio:Point_in_time_of_treatment ,
                                                     [ rdf:type owl:Restriction ;
-                                                      owl:onProperty gfo-light:pointInTimeOf ;
+                                                      owl:onProperty gfo-light:temporalPartOf ;
                                                       owl:someValuesFrom rio:Treatment_phase
                                                     ] ;
                                     rdfs:label "Point in time of risk detection"@en ;
@@ -205,8 +207,12 @@ rio:Point_in_time_of_risk_detection rdf:type owl:Class ;
 rio:Point_in_time_of_treatment rdf:type owl:Class ;
                                rdfs:subClassOf gfo-light:TimeBoundary ,
                                                [ rdf:type owl:Restriction ;
-                                                 owl:onProperty gfo-light:pointInTimeOf ;
+                                                 owl:onProperty gfo-light:temporalPartOf ;
                                                  owl:someValuesFrom rio:Treatment
+                                               ] ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty gfo-light:timeOf ;
+                                                 owl:someValuesFrom rio:Treatment_situation
                                                ] ;
                                rdfs:label "Point in time of treatment"@en ;
                                skos:altLabel "Treatment time point"@en .
@@ -216,21 +222,22 @@ rio:Point_in_time_of_treatment rdf:type owl:Class ;
 rio:Risk_situation rdf:type owl:Class ;
                    rdfs:subClassOf rio:Treatment_situation ,
                                    [ rdf:type owl:Restriction ;
-                                     owl:onProperty gfo-light:causes ;
-                                     owl:someValuesFrom rio:Adverse_event
+                                     owl:onProperty gfo-light:leadsTo ;
+                                     owl:someValuesFrom rio:Adverse_situation
                                    ] ,
                                    [ rdf:type owl:Restriction ;
-                                     owl:onProperty gfo-light:existsIn ;
-                                     owl:someValuesFrom rio:Treatment_phase
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty gfo-light:hasPointInTime ;
+                                     owl:onProperty gfo-light:hasTime ;
                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                      owl:onClass rio:Point_in_time_of_risk_detection
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty gfo-light:processPartOf ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass rio:Treatment_phase
                                    ] ;
                    rdfs:label "Risk situation"@en ;
                    skos:altLabel "Risk"@en ;
-                   skos:definition "A risk situation is a treatment situation that contains such a combination of KPIs that can lead to an adverse event with a certain probability."@en ;
+                   skos:definition "A risk situation is a treatment situation that contains such a combination of KPIs that can lead to an adverse situation with a certain probability."@en ;
                    skos:example "Dura mater infection risk (situation) during cochlear implantation: age < 5 month AND no meningitis vaccination AND no antibiotic prevention"@en .
 
 
@@ -238,7 +245,7 @@ rio:Risk_situation rdf:type owl:Class ;
 rio:Treatment rdf:type owl:Class ;
               rdfs:subClassOf gfo-light:Process ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty gfo-light:hasPointInTime ;
+                                owl:onProperty gfo-light:hasTemporalPart ;
                                 owl:someValuesFrom rio:Point_in_time_of_treatment
                               ] ;
               rdfs:label "Treatment"@en ;
@@ -249,7 +256,11 @@ rio:Treatment rdf:type owl:Class ;
 rio:Treatment_phase rdf:type owl:Class ;
                     rdfs:subClassOf gfo-light:Process ,
                                     [ rdf:type owl:Restriction ;
-                                      owl:onProperty gfo-light:partOf ;
+                                      owl:onProperty gfo-light:hasTemporalPart ;
+                                      owl:someValuesFrom rio:Point_in_time_of_risk_detection
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty gfo-light:processPartOf ;
                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                       owl:onClass rio:Treatment
                                     ] ;
@@ -264,22 +275,22 @@ rio:Treatment_phase rdf:type owl:Class ;
 rio:Treatment_situation rdf:type owl:Class ;
                         rdfs:subClassOf gfo-light:Situation ,
                                         [ rdf:type owl:Restriction ;
-                                          owl:onProperty gfo-light:hasPart ;
+                                          owl:onProperty gfo-light:hasSituationPart ;
                                           owl:someValuesFrom rio:KPI
                                         ] ,
                                         [ rdf:type owl:Restriction ;
-                                          owl:onProperty gfo-light:existsIn ;
-                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                          owl:onClass rio:Treatment
-                                        ] ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty gfo-light:hasPointInTime ;
+                                          owl:onProperty gfo-light:hasTime ;
                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                           owl:onClass rio:Point_in_time_of_treatment
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty gfo-light:processPartOf ;
+                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onClass rio:Treatment
                                         ] ;
                         rdfs:comment "Treatment situations can be analyzed for the presence of risks at certain points in time (of risk detection)."@en ;
                         rdfs:label "Treatment situation"@en ;
                         skos:definition "A treatment situation is any situation arising during treatment."@en .
 
 
-###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

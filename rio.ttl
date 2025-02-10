@@ -169,7 +169,11 @@ gfo-light:TimeBoundary rdf:type owl:Class .
 
 ###  https://w3id.org/rio/Adverse_situation
 rio:Adverse_situation rdf:type owl:Class ;
-                      rdfs:subClassOf rio:Treatment_situation ;
+                      rdfs:subClassOf rio:Treatment_situation ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty gfo-light:resultsFrom ;
+                                        owl:someValuesFrom rio:Risk_situation
+                                      ] ;
                       rdfs:label "Adverse situation"@en ;
                       skos:altLabel "Adverse event"@en ;
                       skos:definition "An adverse situation is any untoward/undesirable treatment situation."@en ;
@@ -209,10 +213,6 @@ rio:Point_in_time_of_treatment rdf:type owl:Class ;
                                                [ rdf:type owl:Restriction ;
                                                  owl:onProperty gfo-light:temporalPartOf ;
                                                  owl:someValuesFrom rio:Treatment
-                                               ] ,
-                                               [ rdf:type owl:Restriction ;
-                                                 owl:onProperty gfo-light:timeOf ;
-                                                 owl:someValuesFrom rio:Treatment_situation
                                                ] ;
                                rdfs:label "Point in time of treatment"@en ;
                                skos:altLabel "Treatment time point"@en .
@@ -222,18 +222,13 @@ rio:Point_in_time_of_treatment rdf:type owl:Class ;
 rio:Risk_situation rdf:type owl:Class ;
                    rdfs:subClassOf rio:Treatment_situation ,
                                    [ rdf:type owl:Restriction ;
-                                     owl:onProperty gfo-light:leadsTo ;
-                                     owl:someValuesFrom rio:Adverse_situation
+                                     owl:onProperty gfo-light:processPartOf ;
+                                     owl:someValuesFrom rio:Treatment_phase
                                    ] ,
                                    [ rdf:type owl:Restriction ;
                                      owl:onProperty gfo-light:hasTime ;
                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                      owl:onClass rio:Point_in_time_of_risk_detection
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty gfo-light:processPartOf ;
-                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                     owl:onClass rio:Treatment_phase
                                    ] ;
                    rdfs:label "Risk situation"@en ;
                    skos:altLabel "Risk"@en ;
@@ -243,11 +238,7 @@ rio:Risk_situation rdf:type owl:Class ;
 
 ###  https://w3id.org/rio/Treatment
 rio:Treatment rdf:type owl:Class ;
-              rdfs:subClassOf gfo-light:Process ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty gfo-light:hasTemporalPart ;
-                                owl:someValuesFrom rio:Point_in_time_of_treatment
-                              ] ;
+              rdfs:subClassOf gfo-light:Process ;
               rdfs:label "Treatment"@en ;
               skos:definition "A treatment is a process of medical treating a patient in hospital."@en .
 
@@ -256,13 +247,8 @@ rio:Treatment rdf:type owl:Class ;
 rio:Treatment_phase rdf:type owl:Class ;
                     rdfs:subClassOf gfo-light:Process ,
                                     [ rdf:type owl:Restriction ;
-                                      owl:onProperty gfo-light:hasTemporalPart ;
-                                      owl:someValuesFrom rio:Point_in_time_of_risk_detection
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
                                       owl:onProperty gfo-light:processPartOf ;
-                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                      owl:onClass rio:Treatment
+                                      owl:someValuesFrom rio:Treatment
                                     ] ;
                     rdfs:label "Treatment phase"@en ;
                     skos:definition "A treatment phase is a time-limited part of the treatment."@en ;
@@ -275,18 +261,13 @@ rio:Treatment_phase rdf:type owl:Class ;
 rio:Treatment_situation rdf:type owl:Class ;
                         rdfs:subClassOf gfo-light:Situation ,
                                         [ rdf:type owl:Restriction ;
-                                          owl:onProperty gfo-light:hasSituationPart ;
-                                          owl:someValuesFrom rio:KPI
+                                          owl:onProperty gfo-light:processPartOf ;
+                                          owl:someValuesFrom rio:Treatment
                                         ] ,
                                         [ rdf:type owl:Restriction ;
                                           owl:onProperty gfo-light:hasTime ;
                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                           owl:onClass rio:Point_in_time_of_treatment
-                                        ] ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty gfo-light:processPartOf ;
-                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                          owl:onClass rio:Treatment
                                         ] ;
                         rdfs:comment "Treatment situations can be analyzed for the presence of risks at certain points in time (of risk detection)."@en ;
                         rdfs:label "Treatment situation"@en ;

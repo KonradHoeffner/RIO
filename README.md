@@ -38,7 +38,7 @@ The class *Risk* could be omitted. The individual properties do not have to be e
 
 A further simplification is that in GFO-light points in time of a process can be assigned directly to the process itself (see *temporalPartOf* in **Fig.1**), without a detour via its temporal extension (*gfo:Chronoid*).
 
-In addition, some object properties from GFO-light (e.g., *gfo-light:processPartOf*, *gfo-light:situationPartOf* and *gfo-light:leadsTo*) could be reused so that it was no longer necessary to define similar properties (*risk_in_phase*, *risk_for_adverse_situation* and *succeeding_situation*) in RIO.
+In addition, some object properties from GFO-light (e.g., *gfo-light:processPartOf*, *gfo-light:situationPartOf* and *gfo-light:leadsTo/resultsFrom*) could be reused so that it was no longer necessary to define similar properties (*risk_in_phase*, *risk_for_adverse_situation* and *succeeding_situation*) in RIO.
 
 A small example ([examples/rio-example.ttl](examples/rio-example.ttl)) illustrates the identification (reasoning) of risks for a bacterial infection during cochlear implantation in infants. Five KPIs are defined (as subclasses of the class *KPI*), each of which has a subclass with a property restriction (**Tab. 1**). 
 
@@ -64,16 +64,16 @@ The class *Dura_mater_infection_risk_situation* (a subclass of *Treatment_situat
     and (hasSituationPart some Vaccination_e_false)
 
 
-Situations that fulfil this rule (i.e., required KPIs are within the defined ranges) are automatically classified in the class *Dura_mater_infection_risk_situation* by the reasoner. The treatment situation instance *rs1*, for example, has the assertions shown in the **Tab. 2**, fulfils the risk rule/restriction and is therefore classified in the class *Dura_mater_infection_risk_situation*.
+Situations that fulfil this rule (i.e., required KPIs are within the defined ranges) are automatically classified in the class *Dura_mater_infection_risk_situation* by the reasoner. The treatment situation instance *rs1_pat1*, for example, has the assertions shown in the **Tab. 2**, fulfils the risk rule/restriction and is therefore classified in the class *Dura_mater_infection_risk_situation*.
 
 <table>
     <tr><th>Object property assertion</th><th>Data property assertion</th></tr>
-    <tr><td>hasSituationPart vaccination_false</td><td>booleanValue false</td></tr>
-    <tr><td>hasSituationPart age_4</td><td>decimalValue 4</td></tr>
-    <tr><td>hasSituationPart antibiotic_false</td><td>booleanValue false</td></tr>
+    <tr><td>hasSituationPart vaccination_false_pat1</td><td>booleanValue false</td></tr>
+    <tr><td>hasSituationPart age_4_pat1</td><td>decimalValue 4</td></tr>
+    <tr><td>hasSituationPart antibiotic_false_pat1</td><td>booleanValue false</td></tr>
 </table>
 
-**Tab. 2.** *Example instance (rs1) of the class Treatment_situation. In the first column are object property assertions of rs1, in the second column - the data property assertions of the corresponding KPI instance.*
+**Tab. 2.** *Example instance (rs1_pat1) of the class Treatment_situation. In the first column are object property assertions of rs1_pat1, in the second column - the data property assertions of the corresponding KPI instance.*
 
 
 ## Publication

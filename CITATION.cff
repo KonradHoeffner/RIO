@@ -1,0 +1,54 @@
+---
+cff-version: 1.2.0
+title: Risk Identification Ontology (RIO)
+message: If you want to cite this ontology, please cite it as below.
+type: dataset
+repository-code: 'https://github.com/Onto-Med/RIO'
+url: 'http://www.ontomedrisk.de/'
+authors:
+  - affiliation: Leipzig University
+    family-names: Uciteli
+    given-names: Alexandr
+    orcid: https://orcid.org/0000-0001-9558-5352
+abstract: Risk Identification Ontology
+keywords:
+  - ontology
+  - risk
+license: CC-BY-4.0
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Uciteli
+      given-names: Alexandr
+    - family-names: Neumann
+      given-names: Juliane
+    - family-names: Tahar
+      given-names: Kais
+    - family-names: Saleh
+      given-names: Kutaiba
+    - family-names: Stucke
+      given-names: Stephan
+    - family-names: Faulbrück-Rohr
+      given-names: Sebastian
+    - family-names: Kaeding
+      given-names: André
+    - family-names: Specht
+      given-names: Martin
+    - family-names: Schmidt
+      given-names: Tobias
+    - family-names: Neumuth
+      given-names: Thomas
+    - family-names: Besting
+      given-names: Andreas
+    - family-names: Stegemann
+      given-names: Dominik
+    - family-names: Portheine
+      given-names: Frank
+    - family-names: Herre
+      given-names: Heinrich
+  doi: 10.1186/s13326-017-0147-8
+  issn: 2041-1480
+  title: Ontology-based specification, identification and analysis of perioperative risks
+  journal: Journal of Biomedical Semantics
+  year: 2017
+  volume: 8

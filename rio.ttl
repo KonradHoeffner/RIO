@@ -102,7 +102,7 @@ foaf:homepage rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/rio/adverse_situation_probability
 rio:adverse_situation_probability rdf:type owl:AnnotationProperty ;
                                   rdfs:range xsd:decimal ;
-                                  rdfs:domain rio:Risk_situation .
+                                  rdfs:domain rio:Adverse_situation .
 
 
 ###  https://w3id.org/rio/adverse_situation_severity
@@ -182,11 +182,7 @@ rio:Adverse_situation rdf:type owl:Class ;
 
 ###  https://w3id.org/rio/KPI
 rio:KPI rdf:type owl:Class ;
-        rdfs:subClassOf gfo-light:Attributive ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty gfo-light:situationPartOf ;
-                          owl:someValuesFrom rio:Treatment_situation
-                        ] ;
+        rdfs:subClassOf gfo-light:Attributive ;
         rdfs:label "KPI"@en ;
         skos:altLabel "Key Performance Indicator"@en ;
         skos:definition "Key Performance Indicators (KPIs) are properties (attributives) of the treatment process and its participants (such as doctors, medical instruments and patients) that are relevant for the estimation of risk."@en ;
@@ -260,6 +256,10 @@ rio:Treatment_phase rdf:type owl:Class ;
 ###  https://w3id.org/rio/Treatment_situation
 rio:Treatment_situation rdf:type owl:Class ;
                         rdfs:subClassOf gfo-light:Situation ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty gfo-light:hasSituationPart ;
+                                          owl:someValuesFrom rio:KPI
+                                        ] ,
                                         [ rdf:type owl:Restriction ;
                                           owl:onProperty gfo-light:processPartOf ;
                                           owl:someValuesFrom rio:Treatment
